@@ -28,7 +28,7 @@ Para rodar o projeto, primeiro clone o repositório na sua máquina (`git clone`
 
 Depois de instalado, execute o comando `npm start` para iniciar a aplicação.
 
-Para rodar os testes, execute o comand `npm test` 
+Para rodar os testes, primeiro popule o banco de dados local (sqlite) com os dados para as validações, feito isso, execute o comand `npm test` 
 
 Para conferir o projeto em produção com Heroku, acesse o link https://panda-investimentos-frontend.herokuapp.com/
 
