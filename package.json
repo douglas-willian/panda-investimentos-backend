@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "nodemon src/index.js",
-    "prestart": "npx knex migration:latest",
+    "prestart": "npx knex migrate:latest",
     "start": "node src/index.js",
     "test": "jest"
   },
