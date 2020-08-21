@@ -6,16 +6,13 @@ const error = require('./middlewares/error');
 const app = express();
 require('dotenv').config();
 
-process.on('uncaughtException', (err) => {
+process.on('uncaughtException', () => {
   // Salvar erro num banco de logs
-  console.log(err);
   process.exit(1);
 });
 
-process.on('unhandledRejection', (err) => {
+process.on('unhandledRejection', () => {
   // Salvar erro num banco de logs
-  console.log(err);
-
   process.exit(1);
 });
 
@@ -26,5 +23,3 @@ app.use(error);
 
 const PORT = process.env.PORT || 3333;
 app.listen(PORT);
-
-// module.exports = app;

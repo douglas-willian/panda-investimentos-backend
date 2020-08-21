@@ -10,7 +10,9 @@
     "testEnvironment": "node"
   },
   "scripts": {
-    "start": "nodemon src/index.js",
+    "dev": "nodemon src/index.js",
+    "prestart": "npx knex migration:latest",
+    "start": "node src/index.js",
     "test": "jest"
   },
   "keywords": [],

@@ -1,7 +1,6 @@
 require('dotenv').config({ path: './.env' });
 
 module.exports = {
-
   development: {
     client: 'sqlite3',
     connection: {
@@ -16,11 +15,7 @@ module.exports = {
 
   production: {
     client: 'postgresql',
-    connection: {
-      database: process.env.DB,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-    },
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 10,
@@ -31,5 +26,4 @@ module.exports = {
     },
     useNullAsDefault: true,
   },
-
 };
