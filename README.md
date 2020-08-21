@@ -1,5 +1,5 @@
 <h1 align="center">
-  Panda Investimentos
+  Panda Investimentos Backend
 </h1>
 
 <br>
