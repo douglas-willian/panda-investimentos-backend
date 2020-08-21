@@ -9,7 +9,7 @@ module.exports = {
 
     if (!user) {
       return response
-        .status(404)
+        .status(400)
         .send({ Mensagem: 'Email não encontrado' });
     }
 
