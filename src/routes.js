@@ -5,11 +5,12 @@ const LoginController = require('./controllers/LoginController');
 const RegisterController = require('./controllers/RegisterController');
 const asyncMiddleware = require('./middlewares/async');
 const auth = require('./middlewares/auth');
-const validator = require('./middlewares/validator');
+const validateUser = require('./middlewares/validateUser');
+const validateBody = require('./middlewares/validateBody');
 
 const routes = express.Router();
-routes.post('/register', validator, asyncMiddleware(RegisterController.create));
-routes.post('/login', validator, asyncMiddleware(LoginController.login));
+routes.post('/register', validateUser, asyncMiddleware(RegisterController.create));
+routes.post('/login', validateUser, asyncMiddleware(LoginController.login));
 
 routes.get(
   '/investments/:id',
@@ -19,6 +20,7 @@ routes.get(
 routes.post(
   '/investments/:id',
   auth,
+  validateBody,
   asyncMiddleware(InvestmentsController.create),
 );
 routes.delete(

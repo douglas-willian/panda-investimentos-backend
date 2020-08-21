@@ -1,6 +1,6 @@
 const Joi = require('@hapi/joi');
 
-module.exports = async function validate(request, response, next) {
+module.exports = async function validateUser(request, response, next) {
   const schema = Joi.object({
     password: Joi.string().min(5).max(255).required(),
     email: Joi.string().min(5).max(255).required()

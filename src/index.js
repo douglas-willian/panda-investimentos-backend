@@ -21,5 +21,4 @@ app.use(express.json());
 app.use(routes);
 app.use(error);
 
-const PORT = process.env.PORT || 3333;
-app.listen(PORT);
+module.exports = app;

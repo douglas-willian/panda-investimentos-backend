@@ -1,8 +1,8 @@
 const request = require('supertest');
-const knex = require('../database/connection');
 const app = require('../index');
+const knex = require('../database/connection');
 
-describe('Login Router', () => {
+describe('Login Routes', () => {
   afterAll(() => {
     knex.destroy();
   });
