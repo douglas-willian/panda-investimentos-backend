@@ -21,6 +21,7 @@ module.exports = {
     if (!validPassword) {
       return response.status(401).send({ Mensagem: 'Usuário e/ou password inválidos' });
     }
+
     const expiresIn = process.env.EXPIRES_IN;
     const token = jwt.sign({ _id: user.id }, process.env.JWT_PRIVATE_KEY, {
       expiresIn,
