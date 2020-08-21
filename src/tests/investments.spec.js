@@ -2,6 +2,16 @@ const request = require('supertest');
 const app = require('../index');
 const knex = require('../database/connection');
 
+async function getLoginToken(email, password) {
+  const response = await request(app).post('/login').send({
+    email,
+    password,
+  });
+
+  const token = `Bearer ${response.body.token}`;
+  return token;
+}
+
 describe('Investments Routes', () => {
   afterAll(() => {
     knex.destroy();
@@ -18,11 +28,7 @@ describe('Investments Routes', () => {
   });
 
   test('should return 400 if no body is provided', async () => {
-    const login = await request(app).post('/login').send({
-      email: 'doug.william@hotmail.com',
-      password: '1234567',
-    });
-    const token = `Bearer ${login.body.token}`;
+    const token = await getLoginToken('doug.william@hotmail.com', '1234567');
 
     const response = await request(app)
       .post('/investments/dc29d73f')
@@ -31,12 +37,7 @@ describe('Investments Routes', () => {
   });
 
   test('should return 200 if correct parameters are provided', async () => {
-    const login = await request(app).post('/login').send({
-      email: 'doug.william@hotmail.com',
-      password: '1234567',
-    });
-
-    const token = `Bearer ${login.body.token}`;
+    const token = await getLoginToken('doug.william@hotmail.com', '1234567');
 
     const response = await request(app)
       .post('/investments/dc29d73f')
@@ -44,4 +45,12 @@ describe('Investments Routes', () => {
       .set('authorization', token);
     expect(response.status).toBe(200);
   });
+
+  // test('should return 204 if correct parameters are provided', async () => {
+  //   const token = await getLoginToken('doug.william@hotmail.com', '1234567');
+  //   const response = await request(app)
+  //     .delete('/investments/:id')
+  //     .set('authorization', token);
+  //   expect(response.status).toBe(204);
+  // });
 });

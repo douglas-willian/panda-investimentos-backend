@@ -9,7 +9,7 @@ module.exports = {
       .select('*');
 
     investments.forEach((i) => {
-      i.date = moment(i.date).format('DD-MM-YYYY');
+      i.date = moment(i.date, 'YYYY-MM-DD').format('DD-MM-YYYY');
     });
     return response.send(investments);
   },
@@ -37,7 +37,7 @@ module.exports = {
       .first();
 
     if (investment.userId !== userId) {
-      return response.status(401).send({ error: 'Operação não permitida' });
+      return response.status(403).send({ Mensagem: 'Operação não permitida para seu usuário' });
     }
 
     await connection('investments').where('id', id).delete();
