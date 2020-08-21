@@ -1,4 +1,4 @@
-const { types } = require('pg');
+const moment = require('moment');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -8,10 +8,8 @@ module.exports = {
       .where('userId', id)
       .select('*');
 
-    const parseDate = (value) => value;
-
     investments.forEach((i) => {
-      i.date = types.setTypeParser(i.date, parseDate);
+      i.date = moment(i.date).format('DD-MM-YYYY');
     });
     return response.send(investments);
   },
