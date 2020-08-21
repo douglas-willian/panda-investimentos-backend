@@ -11,9 +11,7 @@ module.exports = {
     const parseDate = (value) => value;
 
     investments.forEach((i) => {
-      console.log(i);
       i.date = types.setTypeParser(i.date, parseDate);
-      console.log(i);
     });
     return response.send(investments);
   },
@@ -21,7 +19,6 @@ module.exports = {
   async create(request, response) {
     const { type, value, date } = request.body;
     const { userId } = request;
-
     const investment = await connection('investments').insert({
       type,
       value,

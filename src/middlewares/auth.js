@@ -8,7 +8,6 @@ module.exports = async function auth(request, response, next) {
     if (!headerToken) {
       throw new Error();
     }
-
     const splitted = headerToken.split(' ');
 
     if (!splitted.length === 2) {
