@@ -24,8 +24,7 @@ Projeto desenvolvido para o Teste Gorila - Full-Stack
 
 ## 💻 Instruções
 
-Para rodar o projeto, primeiro clone o repositório na sua máquina (git clone), entre na pasta ( cd panda-investimentos-backend ), e execute o comando `npm install` 
-ou `yarn add` no terminal para instalar todas as dependências. 
+Para rodar o projeto, primeiro clone o repositório na sua máquina (git clone), entre na pasta ( cd panda-investimentos-backend ), e execute o comando `npm install` no terminal para instalar todas as dependências. 
 
 Depois de instalado, execute o comando `npm start` para iniciar a aplicação.
 
