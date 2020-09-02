@@ -1,15 +1,13 @@
 const moment = require('moment');
-const connection = require('../database/connection');
+const database = require('../services/database');
 
 module.exports = {
   async list(request, response) {
     const { id } = request.params;
-    const investments = await connection('investments')
-      .where('userId', id)
-      .select('*');
+    const investments = await database.listInvestments(id);
 
-    investments.forEach((i) => {
-      i.date = moment(i.date, 'YYYY-MM-DD').format('DD-MM-YYYY');
+    investments.forEach((investment) => {
+      investment.date = moment(investment.date, 'YYYY-MM-DD').format('DD-MM-YYYY');
     });
     return response.send(investments);
   },
@@ -17,12 +15,14 @@ module.exports = {
   async create(request, response) {
     const { type, value, date } = request.body;
     const { userId } = request;
-    const investment = await connection('investments').insert({
+    const params = {
       type,
       value,
       date,
       userId,
-    });
+    };
+
+    const investment = await database.createInvestment(params);
 
     return response.send(investment);
   },
@@ -31,16 +31,15 @@ module.exports = {
     const { id } = request.params;
     const { userId } = request;
 
-    const investment = await connection('investments')
-      .where('id', id)
-      .select('userId')
-      .first();
+    const investment = await database.getInvestmentById(id);
 
     if (investment.userId !== userId) {
-      return response.status(403).send({ Mensagem: 'Operação não permitida para seu usuário' });
+      return response
+        .status(403)
+        .send({ Mensagem: 'Operação não permitida para seu usuário' });
     }
 
-    await connection('investments').where('id', id).delete();
+    await database.deleteInvestment(id);
 
     return response.status(204).send();
   },

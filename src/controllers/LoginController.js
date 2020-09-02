@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const connection = require('../database/connection');
+const database = require('../services/database');
 
 module.exports = {
   async login(request, response) {
     const { email, password } = request.body;
-    const user = await connection('profiles').where('email', email).first();
+    const user = await database.getUserByEmail(email);
 
     if (!user) {
       return response

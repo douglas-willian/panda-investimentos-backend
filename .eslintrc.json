@@ -12,5 +12,7 @@
     "ecmaVersion": 11
   },
   "plugins": ["react", "jest"],
-  "rules": {}
+  "rules": {
+    "no-param-reassign": "off"
+  }
 }
