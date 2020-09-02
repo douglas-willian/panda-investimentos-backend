@@ -33,4 +33,6 @@ Depois, popule o banco de dados local (sqlite) com os dados para as validações
 
 Para conferir o projeto em produção com Heroku, acesse o link https://panda-investimentos-frontend.herokuapp.com/
 
+## Obs.: Arquivo .env presente somente para os devidos testes locais
+
 ---
