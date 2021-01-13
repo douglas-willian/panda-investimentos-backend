@@ -18,10 +18,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias e bibliotecas:
 - [Jest](https://jestjs.io/) - Para testes
 - [ESLint](https://eslint.org/)
 
-## 💻 Projeto
-
-Projeto desenvolvido para o Teste Gorila - Full-Stack
-
 ## 💻 Instruções
 
 Para rodar o projeto, primeiro clone o repositório na sua máquina (`git clone`), entre na pasta ( `cd panda-investimentos-backend` ), e execute o comando `npm install` no terminal para instalar todas as dependências. 
